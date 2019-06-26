@@ -63,4 +63,26 @@
   	
   </form>
 
+	<cards name="partner-card" model="com.axelor.partner.db.Partner" title="Partner Card">
+    	<field name="fullName"/>
+    	<field name="address" />
+    	<field name="hasImage"/>
+    	<field name="email" />
+    	
+    	<template><![CDATA[
+    		<div class="span4 card-image">
+    			<img ng-if="hasImage" ng-src="{{$image(null, 'image')}}">
+      			<img ng-if="!hasImage" src="img/user.png">
+    			<strong>{{fullName}}</strong>
+    		</div>
+    		<div class="span8">
+				<address>
+			        {{record.street}} {{record.area}}<br>
+			        {{record.city}}, {{record.state}} - {{record.zip}}<br>
+		        </address>
+				
+          	</div>
+    		
+    	]]>	</template>
+	</cards>
 </object-views>

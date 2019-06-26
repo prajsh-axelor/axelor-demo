@@ -9,6 +9,7 @@
     title="Partner Details" action="partner.all"/>
     
     <action-view name="partner.all" title="Partner" model="com.axelor.partner.db.Partner">
+     <view type="cards" name="partner-cards"/>
 	 <view type="grid" name="partner-grid"/> 
     <view type="form" name="partner-form"/> 
   </action-view>

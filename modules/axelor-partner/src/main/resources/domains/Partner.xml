@@ -7,7 +7,7 @@
 	
 	<sequence name="partner.id.seq" initial="1" increment="1" padding="3" prefix="pat"/>
 	<entity name="Partner" sequential="true">
-		<string name="partnerSeq" sequence="partner.id.seq" /> 
+		<string name="partnerSeq" title="PartnerSeq" sequence="partner.id.seq" /> 
 	    <string name="firstName" required="true" />
 	    <string name="lastName" required="true"/>
 	    
