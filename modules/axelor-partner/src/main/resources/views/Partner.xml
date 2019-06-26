@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
+
+  <grid model="com.axelor.partner.db.Partner" title="Partner" name="partner-grid">
+    <field name="partnerSeq" />
+  	<field name="fullName" />
+  	<field name="dateOfBirth" />
+  </grid>
+  
+  <form name="partner-form" title="Partner" model="com.axelor.partner.db.Partner" >
+  	  	
+  	 <panel title="Personal" css="panel-red">
+      <panel colSpan="4">
+        <field name="image" showTitle="false" colSpan="12"/>
+      </panel>
+      <panel colSpan="8">
+      	<field name="partnerSeq" readonly="true" colSpan="4"></field>
+        <field name="fullName" title="Name" readonly="false" colSpan="10">
+          <editor x-show-titles="false">
+            <field name="firstName" colSpan="5"/>
+            <field name="lastName" colSpan="5"/>
+          </editor>
+        </field>
+      <field name="dateOfBirth" colSpan="4"/>
+      
+      <field name="email" colSpan="6" >
+        <viewer><![CDATA[
+        <a href="mailto:{{record.emailId}}">{{record.emailId}}</a>
+        ]]></viewer>
+		<editor x-show-titles="false">
+			<field name="emailId" colSpan="12" placeholder="whatever@example.com" pattern="^[a-z0-9A-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9A-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[a-z]{2,})$"/>
+		</editor>
+	 </field>
+      
+      </panel>
+    </panel>
+  	
+  	  	
+  	<panel title="Contacts" css="panel-green" >
+  	<field name="address" colSpan="12" css="address-list">
+        <viewer><![CDATA[
+        <address>
+        {{record.street}} {{record.area}}<br>
+        {{record.city}}, {{record.state}} - {{record.zip}}<br>
+        </address>
+        ]]>
+        </viewer>
+        <editor x-show-titles="false">
+          <field name="street" colSpan="12"/>
+          <field name="area" colSpan="12"/>
+          <field name="city" colSpan="4"/>
+          <field name="state" colSpan="4"/>
+          <field name="zip" colSpan="4"/>
+        </editor>
+      </field>
+      </panel>
+  	
+  	 <panel title="Company" css="panel-blue" >
+  	<field name="company" colSpan="12" canEdit="true"/> 
+      </panel>
+  	
+  </form>
+
+</object-views>

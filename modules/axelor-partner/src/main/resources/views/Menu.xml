@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
+
+  <menuitem name="menu-partner" title="Partner" />
+
+  <menuitem name="menu-partner-detail" parent="menu-partner"
+    title="Partner Details" action="partner.all"/>
+    
+    <action-view name="partner.all" title="Partner" model="com.axelor.partner.db.Partner">
+	 <view type="grid" name="partner-grid"/> 
+    <view type="form" name="partner-form"/> 
+  </action-view>
+  
+</object-views>
