@@ -11,7 +11,8 @@
     <action-view name="partner.all" title="Partner" model="com.axelor.partner.db.Partner">
      <view type="cards" name="partner-cards"/>
 	 <view type="grid" name="partner-grid"/> 
-    <view type="form" name="partner-form"/> 
+    <view type="form" name="partner-form"/>
+    <context name="json-enhance" expr="true"/>
   </action-view>
   
 </object-views>

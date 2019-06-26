@@ -9,7 +9,7 @@
   	<field name="dateOfBirth" />
   </grid>
   
-  <form name="partner-form" title="Partner" model="com.axelor.partner.db.Partner" >
+  <form name="partner-form" title="Partner" model="com.axelor.partner.db.Partner" onLoad="partnerForm.onLoadSay" onSave="partnerForm.onSaveSay" onNew="partnerForm.onNewSay">
   	  	
   	 <panel title="Personal" css="panel-red">
       <panel colSpan="4">
@@ -60,8 +60,22 @@
   	 <panel title="Company" css="panel-blue" >
   	<field name="company" colSpan="12" canEdit="true"/> 
       </panel>
+      
+      <panel title="ButtonTest" css="panel-yellow">
+      	<button name="sayBtn" title="ClickMe!!" type="button" class="btn" onClick="say.methodCalled" />
+      </panel>
   	
   </form>
+  
+  <action-method name="partnerForm.onNewSay">
+		<call class="com.axelor.partner.web.HelloController" method="onNewSayPartner()"/>
+	</action-method>
+	<action-method name="partnerForm.onLoadSay">
+		<call class="com.axelor.partner.web.HelloController" method="onLoadSayPartner"/>
+	</action-method>
+	<action-method name="partnerForm.onSaveSay">
+		<call class="com.axelor.partner.web.HelloController" method="onSaveSayPartner()"/>
+	</action-method>
 
 	<cards name="partner-card" model="com.axelor.partner.db.Partner" title="Partner Card">
     	<field name="fullName"/>
@@ -77,12 +91,18 @@
     		</div>
     		<div class="span8">
 				<address>
+				{{address.street}}
 			        {{record.street}} {{record.area}}<br>
 			        {{record.city}}, {{record.state}} - {{record.zip}}<br>
 		        </address>
 				
           	</div>
-    		
+          	<button type="button" class="btn" ui-action-clicks="say.methodCalled" />
     	]]>	</template>
 	</cards>
+	
+	<action-method name="say.methodCalled">
+		<call class="com.axelor.partner.web.HelloController" method="say"/>
+	</action-method>	
+	
 </object-views>
