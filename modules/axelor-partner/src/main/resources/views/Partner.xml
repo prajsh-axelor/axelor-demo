@@ -10,7 +10,7 @@
   </grid>
   
   <form name="partner-form" title="Partner" model="com.axelor.partner.db.Partner" 
-  onLoad="partnerForm.onLoadSay" onSave="partnerForm.onSaveSay,action-validation-one,action-validation-two" onNew="partnerForm.onNewSay">
+  onLoad="partnerForm.onLoadSay" onSave="partnerForm.onSaveSay,action-validation-one" onNew="partnerForm.onNewSay">
   	  	
   	 <panel title="Personal" css="panel-red">
       <panel colSpan="4">
@@ -92,12 +92,12 @@
     			<strong>{{fullName}}</strong>
     		</div>
     		<div class="span8">
-				<address>
-				{{address.street}}
-			        {{record.street}} {{record.area}}<br>
-			        {{record.city}}, {{record.state}} - {{record.zip}}<br>
-		        </address>
-				
+				 <address>
+          			<strong>{{address.street}} {{address.area}}</strong><br>
+			          {{address.city}}<span ng-if="address.state">, {{address.state}}
+			          <abbr ng-if="phone" title="Phone">P:</abbr> {{phone}}<br>
+			          <abbr ng-if="email" title="Email">E:</abbr> {{email.emailId}}<br>
+        		</address>
           	</div>
           	<button type="button" class="btn" ui-action-clicks="say.methodCalled" />
     	]]>	</template>
