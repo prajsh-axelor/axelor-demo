@@ -9,7 +9,8 @@
   	<field name="dateOfBirth" />
   </grid>
   
-  <form name="partner-form" title="Partner" model="com.axelor.partner.db.Partner" onLoad="partnerForm.onLoadSay" onSave="partnerForm.onSaveSay" onNew="partnerForm.onNewSay">
+  <form name="partner-form" title="Partner" model="com.axelor.partner.db.Partner" 
+  onLoad="partnerForm.onLoadSay" onSave="partnerForm.onSaveSay,action-validation-one,action-validation-two" onNew="partnerForm.onNewSay">
   	  	
   	 <panel title="Personal" css="panel-red">
       <panel colSpan="4">
@@ -23,7 +24,7 @@
             <field name="lastName" colSpan="5"/>
           </editor>
         </field>
-      <field name="dateOfBirth" colSpan="4"/>
+      <field name="dateOfBirth" title="dob" colSpan="4"/>
       
       <field name="email" colSpan="6" >
         <viewer><![CDATA[
@@ -63,6 +64,7 @@
       
       <panel title="ButtonTest" css="panel-yellow">
       	<button name="sayBtn" title="ClickMe!!" type="button" class="btn" onClick="say.methodCalled" />
+      	<button name="scriptBtn" title="CallToActionScript!!" type="button" class="btn" onClick="say.callToActionScript" />
       </panel>
   	
   </form>
@@ -103,6 +105,28 @@
 	
 	<action-method name="say.methodCalled">
 		<call class="com.axelor.partner.web.HelloController" method="say"/>
-	</action-method>	
+	</action-method>
+	
+	<action-script name="say.callToActionScript">
+		<script language="js"> 
+		alert("Action Script Running");
+		</script>
+	</action-script>	
+	
+	<action-validate name="action-validation-one">
+		<error message="Your birthday cannot be after today." if="dateOfBirth &gt; __date__" action="action-validation-one-action" />
+	</action-validate>
+	
+	<action-attrs name="action-validation-one-action">
+<!-- 		<attribute name="hidden" for="partnerSeq" expr="true"/> -->
+		<attribute name="title" for="dateOfBirth" expr="Date Of Birth"/>
+	</action-attrs>
+	
+<!-- 	<action-validate name="action-validation-two"> -->
+<!-- 		<info message="FirstName equal to LastName" if="firstName == lastName" /> -->
+<!-- 		<notify message="FirstName equal to LastName" if="firstName != lastName" /> -->
+<!-- 		<alert message="FirstName equal to LastName" if="firstName == lastName" /> --> 
+<!-- 		<alert message="FIrstName not equal to LastName" if="firstName != lastName" />  --> 
+<!-- 	</action-validate>	 -->
 	
 </object-views>

@@ -12,7 +12,7 @@
     <field name="state" />
   </grid>
 
-  <form name="address-form" title="Address" model="com.axelor.partner.db.Address">
+  <form name="address-form" title="Address" model="com.axelor.partner.db.Address" onNew="onNewMethodCalled" onLoad="onLoadMethodCalled" onSave="onSaveMethodCalled">
     <panel title="Overview">
      <field name="partner" />
       <field name="street" />
@@ -22,5 +22,18 @@
       <field name="state" />
     </panel>
   </form>
+
+	<action-method name="onNewMethodCalled">
+		<call class="com.axelor.partner.web.HelloController" method="onNewSayAddress"/>
+	</action-method>
+	
+	<action-method name="onLoadMethodCalled">
+		<call class="com.axelor.partner.web.HelloController" method="onLoadSayAddress"/>
+	</action-method>
+	
+	<action-method name="onSaveMethodCalled">
+		<call class="com.axelor.partner.web.HelloController" method="onSaveSayAddress"/>
+	</action-method>
+
 
 </object-views>

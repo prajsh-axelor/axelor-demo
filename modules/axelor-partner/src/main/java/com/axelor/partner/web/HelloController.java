@@ -54,6 +54,18 @@ public class HelloController {
 		System.out.println("onSave method called from partner form");
 	}
 	
+	public void onNewSayAddress() {
+		System.out.println("onNew method called from address form");
+	}
+	
+	public void onLoadSayAddress() {
+		System.out.println("onLoad method called from address form");
+	}
+	
+	public void onSaveSayAddress() {
+		System.out.println("onSave method called from address form");
+	}
+	
 //	public void onLoadSayPartner() {
 //		System.out.println("Hello on load partner");
 //	}
