@@ -17,8 +17,8 @@
         <field name="image" showTitle="false" colSpan="12"/>
       </panel>
       <panel colSpan="8">
-      	<field name="partnerSeq" readonly="true" colSpan="4"/>
-      	<field name="isTechi" readonly="false"  title="Is Technical" widget="boolean-switch" css="inline-checkbox"/>
+      	<field name="partnerSeq" readonly="true" colSpan="4" title="Partner Seq"/>
+      	<field name="isTechi" readonly="false"   colSpan="4" title="Is Technical" widget="boolean-switch" css="inline-checkbox"/>
         <field name="fullName" title="Name" readonly="false" colSpan="10">
           <editor x-show-titles="false">
             <field name="firstName" colSpan="5"/>
@@ -35,17 +35,19 @@
 			<field name="emailId" colSpan="12" placeholder="whatever@example.com" pattern="^[a-z0-9A-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9A-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[a-z]{2,})$"/>
 		</editor>
 	 </field>
+	 
+	 <field name="department" title="Department" colSpan="10" />
       </panel>
     </panel>
     
   	
-  	  	
   	<panel title="Contacts" css="panel-green" >
   	<field name="address" colSpan="12" css="address-list">
         <viewer><![CDATA[
         <address>
         {{record.street}} {{record.area}}<br>
         {{record.city}}, {{record.state}} - {{record.zip}}<br>
+        {{record.country.name}}
         </address>
         ]]>
         </viewer>
@@ -55,16 +57,13 @@
           <field name="city" colSpan="4"/>
           <field name="state" colSpan="4"/>
           <field name="zip" colSpan="4"/>
+          <field name="country" widget="SuggestBox" colSpan="12"/>
         </editor>
       </field>
       </panel>
   	
   	 <panel title="Company" css="panel-blue" >
   		<field name="company" colSpan="12" canEdit="true"/> 
-      </panel>
-      
-      <panel title="Department" css="panel-pink">
-         <field name="department" colSpan="12" canSelect="true" canEdit="false" />      
       </panel>
       
       <panel title="ButtonTest" css="panel-yellow">

@@ -8,10 +8,11 @@
   <entity name="Address" >
     <many-to-one name="partner" ref="Partner" required="true" />
     <string name="street" required="true" />
-    <string name="area" />
+    <string name="area" required="true" />
     <string name="city" required="true" />
     <string name="zip" required="true" />
     <string name="state" required="true" />
+    <many-to-one name="country" ref="Country" />
   </entity>
 
 </domain-models>

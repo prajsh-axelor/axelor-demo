@@ -7,9 +7,14 @@
 	<module name="partner" package="com.axelor.partner.db" />
 
 	<entity name="Department">
-		<string name="deptName" title="Department Name" />
-		<boolean name="isTechnical" title="Is Techinical" />
+		
+		<string name="code" title="Department Code" />
+		<string name="name" title="Department Name" />
+		
+		<boolean name="isTechnical" title="Is Technical" />
+		
 		<many-to-one name="partner" ref="Partner"  />
+
 	</entity>
 
 </domain-models>

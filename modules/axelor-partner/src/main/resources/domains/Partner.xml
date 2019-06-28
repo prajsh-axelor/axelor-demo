@@ -24,7 +24,7 @@
 	    <one-to-one ref="Email" name="email"  title="Email"/>
 	    <one-to-many ref="Address" name="address" mappedBy="partner"/>
 	    <many-to-many ref="Company" name="company" mappedBy="partner"/>
-	    <one-to-many ref="Department" name="department"/>
+	    <many-to-one ref="Department" name="department"/>
   </entity>
 
 
