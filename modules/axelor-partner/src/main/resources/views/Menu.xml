@@ -19,11 +19,34 @@
     title="Configuration" />
     
    <menuitem name="menu-config-department" parent="menu-config"
-    title="Department" action="department.all"/>
+    title="Department" />
+    
+    <menuitem name="menu-config-department-all" parent="menu-config-department"
+    title="All Department" action="department.all"/>
     
     <action-view name="department.all" title="Department" model="com.axelor.partner.db.Department">
     <view type="grid" name="dept-grid"/> 
     <view type="form" name="dept-form"/>
+  </action-view>
+  
+  <menuitem name="menu-config-department-tech" parent="menu-config-department"
+    title="Technical Department" action="department.tech"/>
+    
+    <action-view name="department.tech" title="Department" model="com.axelor.partner.db.Department">
+    <view type="grid" name="dept-grid"/> 
+    <view type="form" name="dept-form"/>
+    <view-param name="popup" value="reload" />
+	<domain> self.isTechnical=true</domain>
+  </action-view>
+  
+  <menuitem name="menu-config-department-nonTech" parent="menu-config-department"
+    title="Non Tech Department" action="department.nonTech"/>
+    
+    <action-view name="department.nonTech" title="Department" model="com.axelor.partner.db.Department">
+    <view type="grid" name="dept-grid"/> 
+    <view type="form" name="dept-form"/>
+    <view-param name="popup" value="reload" />
+	<domain> self.isTechnical=false</domain>
   </action-view>
   
    <menuitem name="menu-config-country" parent="menu-config"
