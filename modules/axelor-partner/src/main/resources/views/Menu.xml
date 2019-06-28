@@ -15,4 +15,15 @@
     <context name="json-enhance" expr="true"/>
   </action-view>
   
+  <menuitem name="menu-config" parent="menu-partner"
+    title="Configuration" />
+    
+   <menuitem name="menu-config-department" parent="menu-config"
+    title="Department" action="department.all"/>
+    
+    <action-view name="department.all" title="Department" model="com.axelor.partner.db.Department">
+    <view type="grid" name="dept-grid"/> 
+    <view type="form" name="dept-form"/>
+  </action-view>
+  
 </object-views>

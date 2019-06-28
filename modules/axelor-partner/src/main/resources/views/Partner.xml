@@ -17,7 +17,8 @@
         <field name="image" showTitle="false" colSpan="12"/>
       </panel>
       <panel colSpan="8">
-      	<field name="partnerSeq" readonly="true" colSpan="4"></field>
+      	<field name="partnerSeq" readonly="true" colSpan="4"/>
+      	<field name="isTechi" readonly="false"  title="Is Technical" widget="boolean-switch" css="inline-checkbox"/>
         <field name="fullName" title="Name" readonly="false" colSpan="10">
           <editor x-show-titles="false">
             <field name="firstName" colSpan="5"/>
@@ -34,9 +35,9 @@
 			<field name="emailId" colSpan="12" placeholder="whatever@example.com" pattern="^[a-z0-9A-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9A-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[a-z]{2,})$"/>
 		</editor>
 	 </field>
-      
       </panel>
     </panel>
+    
   	
   	  	
   	<panel title="Contacts" css="panel-green" >
@@ -59,14 +60,18 @@
       </panel>
   	
   	 <panel title="Company" css="panel-blue" >
-  	<field name="company" colSpan="12" canEdit="true"/> 
+  		<field name="company" colSpan="12" canEdit="true"/> 
+      </panel>
+      
+      <panel title="Department" css="panel-pink">
+         <field name="department" colSpan="12" canSelect="true" canEdit="false" />      
       </panel>
       
       <panel title="ButtonTest" css="panel-yellow">
       	<button name="sayBtn" title="ClickMe!!" type="button" class="btn" onClick="say.methodCalled" />
       	<button name="scriptBtn" title="CallToActionScript!!" type="button" class="btn" onClick="say.callToActionScript" />
       </panel>
-  	
+      
   </form>
   
   <action-method name="partnerForm.onNewSay">

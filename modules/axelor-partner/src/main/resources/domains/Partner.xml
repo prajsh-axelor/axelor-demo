@@ -8,8 +8,8 @@
 	<sequence name="partner.id.seq" initial="1" increment="1" padding="3" prefix="pat"/>
 	<entity name="Partner" sequential="true">
 		<string name="partnerSeq" title="PartnerSeq" sequence="partner.id.seq" /> 
-	    <string name="firstName" required="true" />
-	    <string name="lastName" required="true"/>
+	    <string name="firstName" />
+	    <string name="lastName" />
 	    
 	    <string name="fullName" namecolumn="true" search="firstName,lastName">
 	    <![CDATA[
@@ -19,12 +19,12 @@
 	    ]]> </string>
 	    <date name="dateOfBirth" />
 	    <binary name="image" title="Photo" help="Max size 4MB." image="true" />
-	    
+	    <boolean name="isTechi"  title="Is Techinical" />
 	    
 	    <one-to-one ref="Email" name="email"  title="Email"/>
 	    <one-to-many ref="Address" name="address" mappedBy="partner"/>
 	    <many-to-many ref="Company" name="company" mappedBy="partner"/>
-	    
+	    <one-to-many ref="Department" name="department"/>
   </entity>
 
 
