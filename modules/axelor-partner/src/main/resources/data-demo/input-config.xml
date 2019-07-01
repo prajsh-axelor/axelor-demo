@@ -4,18 +4,22 @@
 	xsi:schemaLocation="http://axelor.com/xml/ns/data-import
   http://axelor.com/xml/ns/data-import/data-import_5.0.xsd">
 
+	<input file="country.csv" type="com.axelor.partner.db.Country" search="self.code = :code" update="false"/>
+	<input file="department.csv" type="com.axelor.partner.db.Department" search="self.code = :code" update="false"/>
+	<input file="company.csv" type="com.axelor.partner.db.Company" search="self.companyName = :name" update="false">
+		<bind to="companyName" column="name" />
+	</input>
 
-
-	<input file="partner.csv" type="com.axelor.partner.db.Partner">
+	<input file="partner.csv" type="com.axelor.partner.db.Partner" search="self.partnerSeq = :partnerSeq" update="false">
 		<bind to="partnerSeq" column="partnerSeq" />
 		<bind to="firstName" column="firstName" />
 		<bind to="lastName" column="lastName" />
 		<bind to="dateOfBirth" column="dateOfBirth" />
-		<bind to="isTechi" column="isTechi" eval="confirmed ==~ /^(T|Y|1|t)$/ ? 'true' : 'false'" />
-		<bind to="email">
+		<bind to="isTechi" column="isTechi" />
+		<bind to="email" search="self.emailId = :email" update="false">
 			<bind to="emailId" column="email" />
 		</bind>
-		<bind to="department" search="self.code = :code" update="false">
+		<bind to="department" search="self.code = :depCode" update="false">
 			<bind to="code" column="depCode" />
 			<bind to="name" column="depName" />
 			<bind to="isTechnical" column="deptIsTech" />
@@ -26,10 +30,13 @@
 			<bind to="city" column="city"/>
 			<bind to="zip" column="zip"/>
 			<bind to="state" column="state"/>
-			<bind to="country">
-				<bind to="code" eval='"${country}".substring(0,3).toLowerCase()' />
+			<bind to="country" search="self.code = :countryCode" update="false">
+				<bind to="code" column="countryCode" />
 				<bind to="name" column="country" />
 			</bind>
+		</bind>
+		<bind to="company" search="self.companyName = :company" update="false">
+			<bind to="companyName" column="company" />
 		</bind>
 	</input>
 

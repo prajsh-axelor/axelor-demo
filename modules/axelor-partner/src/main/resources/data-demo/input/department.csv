@@ -1,7 +1,8 @@
 code,name,isTechnical
-111,production,true
-112,design,true
-113,pr,false
-114,testing,true
-115,marketing,false
-116,advertisement,false
+pro,production,true
+des,design,true
+hres,human resource,false
+tes,testing,true
+mar,marketing,false
+adv,advertisement,false
+dev,development,true
