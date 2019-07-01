@@ -1,1 +1,2 @@
-partnerSeq,firstName,lastName,dateOfBirth,isTechi,email,address,company,department
+partnerSeq,firstName,lastName,dateOfBirth,isTechi,email,depCode,depName,depIsTech,street,area,city,zip,state,country
+pat001,Prajjwal,Singh,1996-01-22,true,prajjwal@gmail.com,dev,Development,true,police colony,anishabad,patna,80002,Bihar,India
