@@ -40,6 +40,7 @@ allprojects {
 dependencies {
 	//to be added later
 	compile project(':modules:axelor-partner')
+	compile project(':modules:axelor-demo-impl')
 }
 
 

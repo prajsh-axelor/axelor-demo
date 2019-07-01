@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.0.xsd">
+
+  <module package="com.axelor.demoimpl.db" name="demoimpl"/>
+  <entity name="Person">
+  	<string name="firstName" />
+  	<string name="lastName" />
+  	<integer name="age" />
+  	<string name="hobby" />
+  	
+  	 <one-to-one ref="PersonEmail" name="email"  title="Email"/>
+  	 
+  </entity>
+  
+</domain-models>  

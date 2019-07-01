@@ -1,0 +1,7 @@
+code,name,isTechnical
+111,production,t
+112,design,t
+113,pr,f
+114,testing,t
+115,marketing,f
+116,advertisement,t

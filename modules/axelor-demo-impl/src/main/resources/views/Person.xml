@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
+
+	<grid model="com.axelor.demoimpl.db.Person" title="Person Grid" name="person-grid">
+		<field name="firstName" />
+		<field name="lastName" />
+		<field name="age" />
+		<field name="hobby" />
+	</grid>
+	<form model="com.axelor.demoimpl.db.Person" title="Person Form" name="person-form">
+		<panel name="PersonPanel" css="panel-red">
+			<field name="firstName" />
+			<field name="lastName" />
+			<field name="age" />
+			<field name="hobby" />
+			<field name="email" colSpan="6" >
+		        <viewer><![CDATA[
+		        <a href="mailto:{{record.emailId}}">{{record.emailId}}</a>
+		        ]]></viewer>
+				<editor x-show-titles="false">
+					<field name="emailId" colSpan="12" placeholder="whatever@example.com" pattern="^[a-z0-9A-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9A-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[a-z]{2,})$"/>
+				</editor>
+		 	</field>
+		</panel>
+	</form>
+
+</object-views>

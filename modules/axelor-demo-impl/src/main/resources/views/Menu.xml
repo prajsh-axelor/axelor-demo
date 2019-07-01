@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
+	
+	<menuitem title="DemoImpl" name="menu-demo-impl"/>
+	<menuitem title="Person" name="menu-person" parent="menu-demo-impl" action="menu-person.action"/>
+	<action-view name="menu-person.action" title="Person" model="com.axelor.demoimpl.db.Person">
+		<view type="grid" name="person-grid"/>
+		<view type="form" name="person-form"/> 
+	</action-view>
+</object-views>

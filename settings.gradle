@@ -2,3 +2,4 @@ rootProject.name = 'axelor-demo'
 
 //include modules
 include "modules:axelor-partner"
+include "modules:axelor-demo-impl"
