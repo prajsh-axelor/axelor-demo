@@ -1,6 +1,2 @@
 partnerSeq,firstName,lastName,dateOfBirth,isTechi,email,depCode,depName,depIsTech,street,area,city,zip,state,country,countryCode,company
-pat001,Prajjwal,Singh,1996-01-22,true,prajjwal@gmail.com,dev,Development,true,police colony,anishabad,patna,80002,Bihar,India,india,Axelor
-pat001,Prajjwal,Singh,1996-01-22,true,prajjwal@gmail.com,dev,Development,true,ceeri road,pilani,jhunjhnu,333031,Rajasthan,India,india,Google
-pat002,Kinjal,Singh,1999-07-31,false,kinjal@gmail.com,sal,Sales,false,someshwera enclave,someshwera,surat,330752,Gujrat,India,india,Axelor
-pat007,Parvej,Leelgar,1996-06-05,true,parvej@leelgar.com,dev,Development,true,vasant vihar,parry ka ghar,sardarsehar,555222,Rajasthan,India,india,Amazon
-pat010,Tracy,Witney,1990-12-01,false,tracy@con.com,sal,Sales,false,Block 31,CathalicDu,Paris,125487,nans,France,france,Axelor
+pat001,Prajjwal,Singh,1996-01-22,t,prajjwal@gmail.com,dev,Development,true,police colony,anishabad,patna,80002,Bihar,India,india,Axelor

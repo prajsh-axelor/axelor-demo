@@ -4,7 +4,8 @@
 	xsi:schemaLocation="http://axelor.com/xml/ns/data-import
   http://axelor.com/xml/ns/data-import/data-import_5.0.xsd">
 
-	<input file="country.csv" type="com.axelor.partner.db.Country" search="self.code = :code" update="false"/>
+	<input file="country.csv" type="com.axelor.partner.db.Country" 
+	separator="\t" search="self.code = :code" update="false"/>
 	<input file="department.csv" type="com.axelor.partner.db.Department" search="self.code = :code" update="false"/>
 	<input file="company.csv" type="com.axelor.partner.db.Company" search="self.companyName = :name" update="false">
 		<bind to="companyName" column="name" />
@@ -15,7 +16,8 @@
 		<bind to="firstName" column="firstName" />
 		<bind to="lastName" column="lastName" />
 		<bind to="dateOfBirth" column="dateOfBirth" />
-		<bind to="isTechi" column="isTechi" />
+		<bind to="isTechi" column="isTechi" eval="isTechi ==~ /^(T|Y|1|t)$/ ? 'true' : 'false'"/>
+														  
 		<bind to="email" search="self.emailId = :email" update="false">
 			<bind to="emailId" column="email" />
 		</bind>
@@ -35,7 +37,7 @@
 				<bind to="name" column="country" />
 			</bind>
 		</bind>
-		<bind to="company" search="self.companyName = :company" update="false">
+		<bind to="company" search="self.companyName = :company"  update="false">
 			<bind to="companyName" column="company" />
 		</bind>
 	</input>
