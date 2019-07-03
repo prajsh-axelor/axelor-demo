@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xml>
+<partner-detail-list>
+	
+	<partners>
+		<partner>
+			<name type="f">Prajjwal</name>
+			<name type="l">Singh</name>
+			<dob value="1997-01-22" />
+			<is_techi>true</is_techi>
+			<email>meprajjwal@gmail.com</email>
+			<department>dev</department>
+			<address-list>
+				<address zip="333031">
+					<street>Bkbiet</street>
+					<area>ceeri road</area>
+					<city>pilani</city>
+					<state>rajasthan</state>
+					<country>IN</country>
+				</address>
+				<address zip="800002">
+					<street>police colony</street>
+					<area>anishabad</area>
+					<city>patna</city>
+					<state>bihar</state>
+					<country>IN</country>
+				</address>
+			</address-list>
+			<company-list>
+				<company>Google</company>
+				<company>Yahoo</company>
+			</company-list>
+
+		</partner>
+		<partner>
+			<name type="f">Kinjal</name>
+			<name type="l">Singh</name>
+			<dob value="1997-01-25" />
+			<is_techi>false</is_techi>
+			<email>kinjal@gmail.com</email>
+			<department>sal</department>
+		</partner>
+		<partner>
+			<name type="f">Prerna</name>
+			<name type="l">Singh</name>
+			<dob value="2003-01-22" />
+			<is_techi>true</is_techi>
+			<email>prerna@gmail.com</email>
+		</partner>
+		<partner>
+			<name type="f">deepak</name>
+			<name type="l">john</name>
+			<dob value="2003-01-22" />
+			<is_techi>false</is_techi>
+			<email>deepak@gmail.com</email>
+		</partner>
+	</partners>
+</partner-detail-list>
+

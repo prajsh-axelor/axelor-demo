@@ -45,7 +45,7 @@
   	<field name="address" colSpan="12" css="address-list">
         <viewer><![CDATA[
         <address>
-        {{record.street}} {{record.area}}<br>
+        {{record.street}}, {{record.area}}<br>
         {{record.city}}, {{record.state}} - {{record.zip}}<br>
         {{record.country.name}}
         </address>

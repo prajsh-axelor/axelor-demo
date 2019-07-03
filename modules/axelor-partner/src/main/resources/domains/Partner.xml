@@ -27,6 +27,4 @@
 	    <many-to-one ref="Department" name="department"/>
   </entity>
 
-
-
 </domain-models>

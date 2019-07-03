@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xml>
+<departments>
+
+	<department code="dev" name="Development" isTechnical="true" />
+	<department code="tes" name="Testing" isTechnical="true" />
+	<department code="des" name="Design" isTechnical="true" />
+	<department code="sal" name="Sales" isTechnical="false" />
+	<department code="mar" name="Marketing" isTechnical="false" />
+
+</departments>

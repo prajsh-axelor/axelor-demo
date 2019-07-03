@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xml>
+<companies>
+
+	<company companyName="Google" />
+	<company companyName="Flipkart" />
+	<company companyName="Axelor" />
+	<company companyName="Salesforce" />
+	<company companyName="Zenser" />
+	
+</companies>
