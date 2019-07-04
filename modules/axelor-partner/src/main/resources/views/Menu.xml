@@ -73,5 +73,37 @@
     	<view type="grid" name="project-task-grid"/> 
     	<view type="form" name="project-task-form"/>
   	</action-view>
-  
+  	
+<!--   	 *********************************** -->
+  	<menuitem name="menu-project-tasks" parent="menu-config-project"
+    title="All Tasks"/>
+<!--     action="project.task.all"/> -->
+
+<!--   <action-view name="project.task.all" title="All Tasks" model="com.axelor.project.db.ProjectTask"> -->
+<!--     <view type="kanban" name="project-task-kanban"/> -->
+<!--     <view type="form" name="project-task-form"/> -->
+<!--     <view type="calendar" name="project-task-calendar" /> -->
+<!--   </action-view> -->
+
+<!-- 	<menuitem name="menu-project-tasks-my" parent="menu-config-project" -->
+<!--     title="My Tasks" -->
+<!--     action="project.task.my"/> -->
+
+<!--   <action-view name="project.task.my" title="My Tasks" model="com.axelor.project.db.ProjectTask"> -->
+<!--     <view type="grid" name="project-task-grid"/> -->
+<!--     <view type="form" name="project-task-form"/> -->
+<!--     <view type="calendar" name="project-task-calendar-my" /> -->
+<!--     <domain>self.user = :currentUser</domain> -->
+<!--     <context name="currentUser" expr="eval: __user__"/> -->
+<!--   </action-view> -->
+
+  <menuitem name="menu-project-tasks-tree" parent="menu-config-project"
+    title="All Tasks (tree)"
+    action="project.tasks.tree"/>
+
+  <action-view name="project.tasks.tree" title="Projects">
+    <view type="tree" name="project-task-tree"/>
+</action-view>
+  	
+ 
 </object-views>

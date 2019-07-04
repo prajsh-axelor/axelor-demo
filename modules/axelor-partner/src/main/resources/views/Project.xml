@@ -3,25 +3,28 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
 
-  <grid name="project-grid" model="com.axelor.partner.db.Project" title="Project">
+  <grid name="project-grid" model="com.axelor.partner.db.Project" title="Project Grid">
   	<field name="name" />
   	<field name="description" />
   	<field name="priority" />
   </grid>
   
-  <form model="com.axelor.partner.db.Project" title="Projects" name="project-form">
+  <form model="com.axelor.partner.db.Project" title="Project Form" name="project-form">
   	<panel title="Overview">
   		<field name="name" />
   		<field name="priority" />
   		<field name="description" />
   		<field name="parent" />
-  		<field name="members" widget="TagSelect" />
-  		<field name="partnersInterested" widget="TagSelect" />
+  		<field name="memberSet" widget="TagSelect" />
+  		<field name="partnerSet" widget="TagSelect" />
   	</panel>
   	<panel-tabs>
-  		<panel-related field="projectTask" title="Tasks">
+  		<panel-related field="taskList" title="Task List">
   			<field name="name" />
-  			<field name="n"></field>
+  			<field name="priority" />
+  			<field name="state" />
+  			<field name="createDate" />
+  			<field name="notes" />
   		</panel-related>
   		<panel title="Notes">
   			<field name="notes" />

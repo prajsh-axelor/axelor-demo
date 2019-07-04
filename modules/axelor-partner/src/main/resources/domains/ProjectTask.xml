@@ -10,7 +10,7 @@
   	<string name="notes" multiline="true" />
   	<string name="state" selection="project.task.state.selection" />
   	<integer name="priority" />
-  	<datetime name="createDate" required="true"/>
+  	<datetime name="createDateT" required="true"/>
 <!--   	<integer name="progress"> -->
 <!--   	<![CDATA[ -->
 <!--   		double -->
@@ -20,6 +20,8 @@
   	<many-to-one name="project" ref="Project" />
   	<many-to-one name="user" column="user_id" ref="com.axelor.auth.db.User" required="true"/>
   	<many-to-one name="projectTask" ref="ProjectTask" title="Parent task" />
+  	
+  	<one-to-many name="workList" ref="ProjectWork" mappedBy="task" />
   	
   </entity>
 </domain-models>

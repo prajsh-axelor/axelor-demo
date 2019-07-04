@@ -11,9 +11,10 @@
 	    <string name="notes" multiline="true" />
 	    <integer name="priority" />
 	    <many-to-one name="parent" ref="Project"/>
-	    <many-to-many name="members" ref="com.axelor.auth.db.User" />
+	    <many-to-many name="memberSet" ref="com.axelor.auth.db.User" />
+	    <one-to-many name="taskList" ref="ProjectTask" mappedBy="project"/>
 	    
-	    <many-to-many name="partnersInterested" ref="Partner" />
+	    <many-to-many name="partnerSet" ref="Partner" />
 	    
 	</entity>
 </domain-models>
