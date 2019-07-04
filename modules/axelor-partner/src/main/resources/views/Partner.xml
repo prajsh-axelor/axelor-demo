@@ -62,9 +62,13 @@
       </field>
       </panel>
   	
-  	 <panel title="Company" css="panel-blue" >
+  	  <panel title="Company" css="panel-blue" >
   		<field name="company" colSpan="12" canEdit="true"/> 
       </panel>
+      
+      <panel-related field="project" css="panel-red">
+      
+      </panel-related>
       
       <panel title="ButtonTest" css="panel-yellow">
       	<button name="sayBtn" title="ClickMe!!" type="button" class="btn" onClick="say.methodCalled" />

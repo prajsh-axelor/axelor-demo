@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.0.xsd">
+
+  <module name="partner" package="com.axelor.partner.db" />
+  
+  <entity name="ProjectTask" table="PROJECT_TASK" cachable="true">
+  	<string name="name" title="Task Summary" required="true" />
+  	<string name="notes" multiline="true" />
+  	<string name="state" selection="project.task.state.selection" />
+  	<integer name="priority" />
+  	<datetime name="createDate" required="true"/>
+<!--   	<integer name="progress"> -->
+<!--   	<![CDATA[ -->
+<!--   		double -->
+<!--   	]]> -->
+<!--   	</integer> -->
+  	
+  	<many-to-one name="project" ref="Project" />
+  	<many-to-one name="user" column="user_id" ref="com.axelor.auth.db.User" required="true"/>
+  	<many-to-one name="projectTask" ref="ProjectTask" title="Parent task" />
+  	
+  </entity>
+</domain-models>

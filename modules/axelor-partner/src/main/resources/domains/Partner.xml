@@ -25,6 +25,7 @@
 	    <one-to-many ref="Address" name="address" mappedBy="partner"/>
 	    <many-to-many ref="Company" name="company" mappedBy="partner"/>
 	    <many-to-one ref="Department" name="department"/>
+	    <many-to-many name="project" ref="Project"/>
   </entity>
 
 </domain-models>
