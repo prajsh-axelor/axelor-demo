@@ -25,6 +25,8 @@
 	    <one-to-many ref="Address" name="address" mappedBy="partner"/>
 	    <many-to-many ref="Company" name="company" mappedBy="partner"/>
 	    <many-to-one ref="Department" name="department"/>
+	    <one-to-many name="phone" ref="Phone" mappedBy="partner"/>		<!-- 	    mappedBy="partner" -->
+	    
   </entity>
 
 

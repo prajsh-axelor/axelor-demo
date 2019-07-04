@@ -66,6 +66,10 @@
   		<field name="company" colSpan="12" canEdit="true"/> 
       </panel>
       
+      <panel-related field="phone">
+      	<field name="phoneNumber" />
+      </panel-related>
+      
       <panel title="ButtonTest" css="panel-yellow">
       	<button name="sayBtn" title="ClickMe!!" type="button" class="btn" onClick="say.methodCalled" />
       	<button name="scriptBtn" title="CallToActionScript!!" type="button" class="btn" onClick="say.callToActionScript" />

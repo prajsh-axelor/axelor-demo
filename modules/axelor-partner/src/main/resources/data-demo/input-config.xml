@@ -4,43 +4,68 @@
 	xsi:schemaLocation="http://axelor.com/xml/ns/data-import
   http://axelor.com/xml/ns/data-import/data-import_5.0.xsd">
 
-	<input file="country.csv" type="com.axelor.partner.db.Country" 
-	separator="\t" search="self.code = :code" update="false"/>
-	<input file="department.csv" type="com.axelor.partner.db.Department" search="self.code = :code" update="false"/>
-	<input file="company.csv" type="com.axelor.partner.db.Company" search="self.companyName = :name" update="false">
+	<input file="country.csv" type="com.axelor.partner.db.Country"
+		separator="\t" search="self.code = :code" update="false" />
+		
+<!-- 	<input file="phone.csv" type="com.axelor.partner.db.Phone" search="self.phoneNumber in :phones" update="false"> -->
+<!-- 			<bind to="phoneNumber" column="phones" eval="phones.split('\\|') as List"/> -->
+<!-- 	</input> -->
+
+	<input file="department.csv"
+		type="com.axelor.partner.db.Department" search="self.code = :code"
+		update="false" />
+
+	<input file="company.csv" type="com.axelor.partner.db.Company"
+		search="self.companyName = :name" update="false">
 		<bind to="companyName" column="name" />
 	</input>
 
-	<input file="partner.csv" type="com.axelor.partner.db.Partner" search="self.partnerSeq = :partnerSeq" update="false">
+	<input file="partner.csv" type="com.axelor.partner.db.Partner"
+		search="self.partnerSeq = :partnerSeq">
 		<bind to="partnerSeq" column="partnerSeq" />
 		<bind to="firstName" column="firstName" />
 		<bind to="lastName" column="lastName" />
 		<bind to="dateOfBirth" column="dateOfBirth" />
-		<bind to="isTechi" column="isTechi" eval="isTechi ==~ /^(T|Y|1|t)$/ ? 'true' : 'false'"/>
-														  
+		<bind to="isTechi" column="isTechi"
+			eval="isTechi ==~ /^(T|Y|1|t)$/ ? 'true' : 'false'" />
+
 		<bind to="email" search="self.emailId = :email" update="false">
 			<bind to="emailId" column="email" />
 		</bind>
-		<bind to="department" search="self.code = :depCode" update="false">
+		<bind to="department" search="self.code = :depCode"
+			update="false">
 			<bind to="code" column="depCode" />
 			<bind to="name" column="depName" />
 			<bind to="isTechnical" column="deptIsTech" />
 		</bind>
 		<bind to="address">
-			<bind to="street" column="street"/>
-			<bind to="area" column="area"/>
-			<bind to="city" column="city"/>
-			<bind to="zip" column="zip"/>
-			<bind to="state" column="state"/>
-			<bind to="country" search="self.code = :countryCode" update="false">
+			<bind to="street" column="street" />
+			<bind to="area" column="area" />
+			<bind to="city" column="city" />
+			<bind to="zip" column="zip" />
+			<bind to="state" column="state" />
+			<bind to="country" search="self.code = :countryCode"
+				update="false">
 				<bind to="code" column="countryCode" />
 				<bind to="name" column="country" />
 			</bind>
 		</bind>
-		<bind to="company" search="self.companyName = :company"  update="false">
-			<bind to="companyName" column="company" />
+		<bind to="company" column="companys"
+			search="self.companyName in :companys"
+			eval="companys.split('\\|') as List" update="false">
+			<!-- <bind to="companyName" column="company" /> -->
+			<!-- <bind column="t2" to="taxes" search="self.code in :t2" eval="t2.split('\\|') 
+				as List"/> -->
+			<!-- <bind column="companys" to="companyName" /> -->
 		</bind>
+		
+<!-- 		<bind to="phone" column="phones" search="self.phoneNumber in :phones" eval="phones.split('\\|') as List" update="false"> -->
+<!-- 			//<bind to="phoneNumber" column="phones" /> -->
+<!-- 		</bind> -->
 	</input>
+
+
+<!-- NOTE : importing one to many field Phone from csv not working -->
 
 
 </csv-inputs>
