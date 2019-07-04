@@ -1,2 +1,2 @@
-partnerSeq,firstName,lastName,dateOfBirth,isTechi,email,depCode,depName,depIsTech,street,area,city,zip,state,country,countryCode,company
-pat001,Prajjwal,Singh,1996-01-22,t,prajjwal@gmail.com,dev,Development,true,police colony,anishabad,patna,80002,Bihar,India,india,Axelor
+partnerSeq,firstName,lastName,dateOfBirth,isTechi,email,depCode,depName,depIsTech,street,area,city,zip,state,country,countryCode,companys
+pat001,Prajjwal,Singh,1996-01-22,t,prajjwal@gmail.com,dev,Development,true,police colony,anishabad,patna,80002,Bihar,India,india,Axelor|Google

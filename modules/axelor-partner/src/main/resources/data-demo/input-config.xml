@@ -1,55 +1,46 @@
 <?xml version="1.0"?>
-<xml-inputs xmlns="http://axelor.com/xml/ns/data-import"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://axelor.com/xml/ns/data-import
+<csv-inputs xmlns="http://axelor.com/xml/ns/data-import"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/data-import
   http://axelor.com/xml/ns/data-import/data-import_5.0.xsd">
-  
-  <input file="companies.xml" root="companies">
-  	<bind node="company" type="com.axelor.partner.db.Company" search="self.companyName = :company">
-       <bind node="@companyName" to="companyName" />
-   </bind>
-  </input>
-  <input file="departments.xml" root="departments">
-  	<bind node="department" type="com.axelor.partner.db.Department" search="self.code = :code">
-		<bind node="@code" to="code" />
-		<bind node="@name" to="name" />
-		<bind node="@isTechnical" to="isTechnical" />
-	</bind>
-  </input>
-  <input file="countries.xml" root="countries">
-  	<bind node="country" type="com.axelor.partner.db.Country" search="self.code = :code">
-		<bind node="@code" to="code" />
-		<bind node="@name" to="name" />
-	</bind>
-  </input>
 
-  <input file="partners.xml" root="partner-detail-list">
-  
-  	<bind node="partners/partner" type="com.axelor.partner.db.Partner" >
-  		
-  		<bind node="name[@type='f']" to="firstName" />
-  		<bind node="name[@type='l']" to="lastName" />
-  		<bind node="dob/@value" to="dateOfBirth" />
-  		<bind node="is_techi/text()" to="isTechi" />
-  		<bind node="email" to="email" >
-  			<bind node="text()" to="emailId" />
-  		</bind>
-  		<bind node="department" to="department_code" />
-  		<bind to="department" search="self.code = :department_code" />
-  		<bind node="address-list/address" to="address">
-        	<bind node="street" to="street"/>
-        	<bind node="area" to="area"/>
-        	<bind node="city" to="city"/>
-        	<bind node="@zip" to="zip"/>
-        	<bind node="state" to="state"/>
-        	<bind node="country" to="country_code" />
-        	<bind to="country"  search="self.code = :country_code"/>
-        </bind>
-        <bind node="company-list/company" to="company_name" />
-        <bind to="company" search="self.companyName = :company_name" />
-        
-    </bind>
-  	
-  </input>
-  
- </xml-inputs>
+	<input file="country.csv" type="com.axelor.partner.db.Country" 
+	separator="\t" search="self.code = :code" update="false"/>
+	<input file="department.csv" type="com.axelor.partner.db.Department" search="self.code = :code" update="false"/>
+	<input file="company.csv" type="com.axelor.partner.db.Company" search="self.companyName = :name" update="false">
+		<bind to="companyName" column="name" />
+	</input>
+
+	<input file="partner.csv" type="com.axelor.partner.db.Partner" search="self.partnerSeq = :partnerSeq" update="false">
+		<bind to="partnerSeq" column="partnerSeq" />
+		<bind to="firstName" column="firstName" />
+		<bind to="lastName" column="lastName" />
+		<bind to="dateOfBirth" column="dateOfBirth" />
+		<bind to="isTechi" column="isTechi" eval="isTechi ==~ /^(T|Y|1|t)$/ ? 'true' : 'false'"/>
+														  
+		<bind to="email" search="self.emailId = :email" update="false">
+			<bind to="emailId" column="email" />
+		</bind>
+		<bind to="department" search="self.code = :depCode" update="false">
+			<bind to="code" column="depCode" />
+			<bind to="name" column="depName" />
+			<bind to="isTechnical" column="deptIsTech" />
+		</bind>
+		<bind to="address">
+			<bind to="street" column="street"/>
+			<bind to="area" column="area"/>
+			<bind to="city" column="city"/>
+			<bind to="zip" column="zip"/>
+			<bind to="state" column="state"/>
+			<bind to="country" search="self.code = :countryCode" update="false">
+				<bind to="code" column="countryCode" />
+				<bind to="name" column="country" />
+			</bind>
+		</bind>
+		<bind to="company" column="companys"
+			search="self.companyName in :companys"
+			eval="companys.split('\\|') as List" update="false"/>
+	</input>
+
+
+</csv-inputs>
