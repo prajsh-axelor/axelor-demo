@@ -1,109 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<object-views xmlns="http://axelor.com/xml/ns/object-views"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
+<object-views xmlns="http://axelor.com/xml/ns/object-views" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
 
-  <menuitem name="menu-partner" title="Partner" />
+	<menuitem name="menu-partner" title="Partner" />
 
-  <menuitem name="menu-partner-detail" parent="menu-partner"
-    title="Partner Details" action="partner.all"/>
-    
-    <action-view name="partner.all" title="Partner" model="com.axelor.partner.db.Partner">
-     <view type="cards" name="partner-cards"/>
-	 <view type="grid" name="partner-grid"/> 
-    <view type="form" name="partner-form"/>
-    <context name="json-enhance" expr="true"/>
-  </action-view>
-  
-  <menuitem name="menu-config" parent="menu-partner"
-    title="Configuration" />
-    
-   <menuitem name="menu-config-department" parent="menu-config"
-    title="Department" />
-    
-    <menuitem name="menu-config-department-all" parent="menu-config-department"
-    title="All Department" action="department.all"/>
-    
-    <action-view name="department.all" title="Department" model="com.axelor.partner.db.Department">
-    <view type="grid" name="dept-grid"/> 
-    <view type="form" name="dept-form"/>
-  </action-view>
-  
-  <menuitem name="menu-config-department-tech" parent="menu-config-department"
-    title="Technical Department" action="department.tech"/>
-    
-    <action-view name="department.tech" title="Department" model="com.axelor.partner.db.Department">
-    <view type="grid" name="dept-grid"/> 
-    <view type="form" name="dept-form"/>
-    <view-param name="popup" value="reload" />
-	<domain> self.isTechnical=true</domain>
-  </action-view>
-  
-  <menuitem name="menu-config-department-nonTech" parent="menu-config-department"
-    title="Non Tech Department" action="department.nonTech"/>
-    
-    <action-view name="department.nonTech" title="Department" model="com.axelor.partner.db.Department">
-    <view type="grid" name="dept-grid"/> 
-    <view type="form" name="dept-form"/>
-    <view-param name="popup" value="reload" />
-	<domain> self.isTechnical=false</domain>
-  </action-view>
-  
-   <menuitem name="menu-config-country" parent="menu-config"
-    title="Country" action="country.all"/>
-    
-    <action-view name="country.all" title="Country" model="com.axelor.partner.db.Country">
-    <view type="grid" name="country-grid"/> 
-    <view type="form" name="country-form"/>
-  </action-view>
-  
-  
-     <menuitem name="menu-config-project" parent="menu-config" title="Project" />
-    
-    <menuitem name="menu-config-project-all" parent="menu-config-project" title="All Project" action="project.all"/>
-    
-    <action-view name="project.all" title="Projects" model="com.axelor.partner.db.Project">
-    	<view type="grid" name="project-grid"/> 
-    	<view type="form" name="project-form"/>
-  	</action-view>
-  	
-  	<menuitem name="menu-config-project-task-all" parent="menu-config-project" title="Project Task" action="project-task.all"/>
-    
-    <action-view name="project-task.all" title="Project Tasks" model="com.axelor.partner.db.ProjectTask">
-    	<view type="grid" name="project-task-grid"/> 
-    	<view type="form" name="project-task-form"/>
-  	</action-view>
-  	
-<!--   	 *********************************** -->
-  	<menuitem name="menu-project-tasks" parent="menu-config-project"
-    title="All Tasks"/>
-<!--     action="project.task.all"/> -->
+	<menuitem name="menu-partner-detail" parent="menu-partner" title="Partner Details" action="partner.all" />
 
-<!--   <action-view name="project.task.all" title="All Tasks" model="com.axelor.project.db.ProjectTask"> -->
-<!--     <view type="kanban" name="project-task-kanban"/> -->
-<!--     <view type="form" name="project-task-form"/> -->
-<!--     <view type="calendar" name="project-task-calendar" /> -->
-<!--   </action-view> -->
+	<action-view name="partner.all" title="Partner" model="com.axelor.partner.db.Partner">
+		<view type="cards" name="partner-cards" />
+		<view type="grid" name="partner-grid" />
+		<view type="form" name="partner-form" />
+		<context name="json-enhance" expr="true" />
+	</action-view>
 
-<!-- 	<menuitem name="menu-project-tasks-my" parent="menu-config-project" -->
-<!--     title="My Tasks" -->
-<!--     action="project.task.my"/> -->
+	<menuitem name="menu-config" parent="menu-partner" title="Configuration" />
 
-<!--   <action-view name="project.task.my" title="My Tasks" model="com.axelor.project.db.ProjectTask"> -->
-<!--     <view type="grid" name="project-task-grid"/> -->
-<!--     <view type="form" name="project-task-form"/> -->
-<!--     <view type="calendar" name="project-task-calendar-my" /> -->
-<!--     <domain>self.user = :currentUser</domain> -->
-<!--     <context name="currentUser" expr="eval: __user__"/> -->
-<!--   </action-view> -->
+	<menuitem name="menu-config-department" parent="menu-config" title="Department" />
 
-  <menuitem name="menu-project-tasks-tree" parent="menu-config-project"
-    title="All Tasks (tree)"
-    action="project.tasks.tree"/>
+	<menuitem name="menu-config-department-all" parent="menu-config-department" title="All Department" action="department.all" />
 
-  <action-view name="project.tasks.tree" title="Projects">
-    <view type="tree" name="project-task-tree"/>
-</action-view>
-  	
- 
+	<action-view name="department.all" title="Department" model="com.axelor.partner.db.Department">
+		<view type="grid" name="dept-grid" />
+		<view type="form" name="dept-form" />
+	</action-view>
+
+	<menuitem name="menu-config-department-tech" parent="menu-config-department" title="Technical Department" action="department.tech" />
+
+	<action-view name="department.tech" title="Department" model="com.axelor.partner.db.Department">
+		<view type="grid" name="dept-grid" />
+		<view type="form" name="dept-form" />
+		<view-param name="popup" value="reload" />
+		<domain> self.isTechnical=true</domain>
+	</action-view>
+
+	<menuitem name="menu-config-department-nonTech" parent="menu-config-department" title="Non Tech Department" action="department.nonTech" />
+
+	<action-view name="department.nonTech" title="Department" model="com.axelor.partner.db.Department">
+		<view type="grid" name="dept-grid" />
+		<view type="form" name="dept-form" />
+		<view-param name="popup" value="reload" />
+		<domain> self.isTechnical=false</domain>
+	</action-view>
+
+	<menuitem name="menu-config-country" parent="menu-config" title="Country" action="country.all" />
+
+	<action-view name="country.all" title="Country" model="com.axelor.partner.db.Country">
+		<view type="grid" name="country-grid" />
+		<view type="form" name="country-form" />
+	</action-view>
+
+
+	<menuitem name="menu-config-project" parent="menu-config" title="Project" />
+
+	<menuitem name="menu-config-project-all" parent="menu-config-project" title="All Project" action="project.all" />
+	<action-view name="project.all" title="Projects" model="com.axelor.partner.db.Project">
+		<view type="grid" name="project-grid" />
+		<view type="form" name="project-form" />
+	</action-view>
+
+	<menuitem name="menu-config-project-task-all" parent="menu-config-project" title="Project Task" action="project-task.all" />
+	<action-view name="project-task.all" title="Project Tasks" model="com.axelor.partner.db.ProjectTask">
+		<view type="grid" name="project-task-grid" />
+		<view type="form" name="project-task-form" />
+		<view type="kanban" name="project-task-kanban" />
+	</action-view>
+
+	<!-- *********************************** -->
+	<menuitem name="menu-project-tasks" parent="menu-config-project" title="All Tasks (kanban)" action="project.task.all.kanban" />
+
+	<action-view name="project.task.all.kanban" title="All Tasks K" model="com.axelor.project.db.ProjectTask">
+		<view type="kanban" name="project-task-kanban" />
+		<view type="form" name="project-task-form" />
+	</action-view>
+
+	<menuitem name="menu-project-tasks-tree" parent="menu-config-project" title="All Tasks (tree)" action="project.tasks.tree" />
+
+	<action-view name="project.tasks.tree" title="Projects">
+		<view type="tree" name="project-task-tree" />
+	</action-view>
+
+
 </object-views>

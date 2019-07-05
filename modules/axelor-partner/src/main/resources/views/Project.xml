@@ -13,7 +13,7 @@
 	<form model="com.axelor.partner.db.Project" title="Project Form"
 		name="project-form">
 		<panel title="Overview">
-			<field name="name" />
+			<field name="name"/>
 			<field name="priority" />
 			<field name="description" />
 			<field name="parent" />

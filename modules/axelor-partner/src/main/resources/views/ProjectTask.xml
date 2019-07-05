@@ -52,7 +52,7 @@
 
 		<!-- define 1st level node -->
 		<node model="com.axelor.partner.db.Project"
-			onClick="projects.task.open.project">
+			onClick="projects.task.open.project" >
 			<field name="name" as="title" />
 		</node>
 
@@ -63,6 +63,26 @@
 			<field name="progress" as="progress" />
 		</node>
 	</tree>
+	
+	<kanban name="project-task-kanban" sequenceBy="priority" model="com.axelor.partner.db.ProjectTask" columnBy="state" title="All Tasks KanBan" >
+		<field name="name"/>
+		<field name="notes"/>
+		<field name="state"/>
+		<field name="priority"/>
+		<field name="progress"/>
+		<field name="dateCreateT"/>
+		
+		<template> <![CDATA[
+			<h4>{{name}}</h4>
+			<img nf-if="user" ng-src="{{$image('user', 'image')}}">
+			<div class="card-body">{{notes}}</div>
+			<div class="card-footer">
+			<i class='fa fa-clock-o'></i>
+			<span>{{dateCreateT|date:'yyyy-MM-dd HH:mm:ss'}}</span>
+		]]></template>
+		
+	</kanban>
+	
 
 	<action-view name="projects.task.open.project"
 		title="Project" model="com.axelor.partner.db.Project">
