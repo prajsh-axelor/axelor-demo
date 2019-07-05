@@ -11,6 +11,7 @@
   	<string name="state" selection="project.task.state.selection" />
   	<integer name="priority" />
   	<datetime name="createDateT" required="true"/>
+  	<integer name="progress" />
 <!--   	<integer name="progress"> -->
 <!--   	<![CDATA[ -->
 <!--   		double -->

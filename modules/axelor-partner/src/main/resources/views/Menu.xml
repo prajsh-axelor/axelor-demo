@@ -62,14 +62,14 @@
     
     <menuitem name="menu-config-project-all" parent="menu-config-project" title="All Project" action="project.all"/>
     
-    <action-view name="project.all" title="Project" model="com.axelor.partner.db.Project">
+    <action-view name="project.all" title="Projects" model="com.axelor.partner.db.Project">
     	<view type="grid" name="project-grid"/> 
     	<view type="form" name="project-form"/>
   	</action-view>
   	
   	<menuitem name="menu-config-project-task-all" parent="menu-config-project" title="Project Task" action="project-task.all"/>
     
-    <action-view name="project-task.all" title="Project" model="com.axelor.partner.db.Project">
+    <action-view name="project-task.all" title="Project Tasks" model="com.axelor.partner.db.ProjectTask">
     	<view type="grid" name="project-task-grid"/> 
     	<view type="form" name="project-task-form"/>
   	</action-view>
