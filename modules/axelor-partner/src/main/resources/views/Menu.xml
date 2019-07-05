@@ -66,11 +66,9 @@
 	</action-view>
 
 	<!-- *********************************** -->
-	<menuitem name="menu-project-tasks" parent="menu-config-project" title="All Tasks (kanban)" action="project.task.all.kanban" />
-
-	<action-view name="project.task.all.kanban" title="All Tasks K" model="com.axelor.project.db.ProjectTask">
+	<menuitem title="All Tasks (kanban)" name="menu-project-kanbanview" parent="menu-config-project" action="task.project.kanban"/>
+	<action-view name="task.project.kanban" title="All Tasks K" model="com.axelor.partner.db.ProjectTask">
 		<view type="kanban" name="project-task-kanban" />
-		<view type="form" name="project-task-form" />
 	</action-view>
 
 	<menuitem name="menu-project-tasks-tree" parent="menu-config-project" title="All Tasks (tree)" action="project.tasks.tree" />
