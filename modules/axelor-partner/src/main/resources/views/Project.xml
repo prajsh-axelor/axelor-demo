@@ -6,6 +6,7 @@
 		<toolbar>
 			<button name="btnPrint" icon="fa-print" title="Print" onClick="btnPrintGrid.action" />
 			<button name="btnExport" icon="fa-rocket" title="Export" onClick="btnExportGrid.action" />
+			<button name="btnExportXML" icon="fa-rocket" title="Export XML" onClick="btnExportGridXML.action" />
 		</toolbar>
 		<field name="name" />
 		<field name="description" />
@@ -21,8 +22,9 @@
 	<form model="com.axelor.partner.db.Project" title="Project Form" name="project-form">
 
 		<toolbar>
-			<button name="btnPrint" icon="fa-print" title="Print" onClick="btnPrint.action" />
 			<button name="btnExport" icon="fa-rocket" title="Export" onClick="btnExport.action" />
+			<button name="btnExportXML" icon="fa-rocket" title="Export XML ST" onClick="btnExportXML.action" />
+			<button name="btnExportXMLGroovy" icon="fa-rocket" title="Export XML Groovy" onClick="btnExportXMLGroovy.action" />
 		</toolbar>
 
 		<panel title="Overview">
@@ -53,5 +55,15 @@
 	<action-method name="btnExport.action">
 		<call class="com.axelor.partner.web.ProjectExport" method="createCSV" />
 	</action-method>
+	
+	<action-export name="btnExportGridXML.action">
+		<export name="projects_details.xml" template="export-project-groovy.tmpl" engine="groovy"/>
+	</action-export>
+	<action-export name="btnExportXML.action" download="true" output="${name}/${date}${time}">
+		<export name="${name}.xml" template="data-export-template/export-project-st.st" engine="ST"/>
+	</action-export>
+	<action-export name="btnExportXMLGroovy.action" download="true" output="/home/xyz">
+		<export name="${name}.xml" template="data-export-template/export-project-groovy.tmpl" engine="groovy"/>
+	</action-export>
 
 </object-views>
