@@ -1,49 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<object-views xmlns="http://axelor.com/xml/ns/object-views"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
+<object-views xmlns="http://axelor.com/xml/ns/object-views" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
 
-  <grid model="com.axelor.partner.db.Partner" title="Partner" name="partner-grid">
-    <field name="partnerSeq" />
-  	<field name="fullName" />
-  	<field name="dateOfBirth" />
-  </grid>
-  
-  <form name="partner-form" title="Partner" model="com.axelor.partner.db.Partner" 
-  onLoad="partnerForm.onLoadSay" onSave="partnerForm.onSaveSay,action-validation-one" onNew="partnerForm.onNewSay">
-  	  	
-  	 <panel title="Personal" css="panel-red">
-      <panel colSpan="4">
-        <field name="image" showTitle="false" colSpan="12"/>
-      </panel>
-      <panel colSpan="8">
-      	<field name="partnerSeq" readonly="true" colSpan="4" title="Partner Seq"/>
-      	<field name="isTechi" readonly="false"   colSpan="4" title="Is Technical" widget="boolean-switch" css="inline-checkbox"/>
-        <field name="fullName" title="Name" readonly="false" colSpan="10">
-          <editor x-show-titles="false">
-            <field name="firstName" colSpan="5"/>
-            <field name="lastName" colSpan="5"/>
-          </editor>
-        </field>
-      <field name="dateOfBirth" title="dob" colSpan="4"/>
-      
-      <field name="email" colSpan="6" >
-        <viewer><![CDATA[
+	<grid model="com.axelor.partner.db.Partner" title="Partner" name="partner-grid">
+		<toolbar>
+			<button name="btnGenerateReport" title="Report" icon="fa-print" onClick="generateReportGrid.action" />
+		</toolbar>
+		<field name="partnerSeq" />
+		<field name="fullName" />
+		<field name="dateOfBirth" />
+	</grid>
+
+	<form name="partner-form" title="Partner" model="com.axelor.partner.db.Partner" onLoad="partnerForm.onLoadSay"
+		onSave="partnerForm.onSaveSay,action-validation-one" onNew="partnerForm.onNewSay">
+		<toolbar>
+			<button name="btnGenerateReport" title="Report" icon="fa-print" onClick="generateReport.action" />
+		</toolbar>
+		<panel title="Personal" css="panel-red">
+			<panel colSpan="4">
+				<field name="image" showTitle="false" colSpan="12" widget="image" />
+			</panel>
+			<panel colSpan="8">
+				<field name="partnerSeq" readonly="true" colSpan="4" title="Partner Seq" />
+				<field name="isTechi" readonly="false" colSpan="4" title="Is Technical" widget="boolean-switch" css="inline-checkbox" />
+				<field name="fullName" title="Name" readonly="false" colSpan="10">
+					<editor x-show-titles="false">
+						<field name="firstName" colSpan="5" />
+						<field name="lastName" colSpan="5" />
+					</editor>
+				</field>
+				<field name="dateOfBirth" title="dob" colSpan="4" />
+
+				<field name="email" colSpan="6">
+					<viewer><![CDATA[
         <a href="mailto:{{record.emailId}}">{{record.emailId}}</a>
         ]]></viewer>
-		<editor x-show-titles="false">
-			<field name="emailId" colSpan="12" placeholder="whatever@example.com" pattern="^[a-z0-9A-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9A-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[a-z]{2,})$"/>
-		</editor>
-	 </field>
-<!-- 		<field name="department" title="Department" colSpan="10"  domain="self.isTechnical='true'"/>  -->
-		 <field name="department" title="Department" colSpan="10"  domain="self.isTechnical=:isTechi"/>
-      </panel>
-    </panel>
-    
-  	
-  	<panel title="Contacts" css="panel-green" >
-  	<field name="address" colSpan="12" css="address-list">
-        <viewer><![CDATA[
+					<editor x-show-titles="false">
+						<field name="emailId" colSpan="12" placeholder="whatever@example.com"
+							pattern="^[a-z0-9A-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ!#$%&amp;'*+/=?^_`{|}~-]+(?:\.[a-z0-9A-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ!#$%&amp;'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[a-z]{2,})$" />
+					</editor>
+				</field>
+				<!-- <field name="department" title="Department" colSpan="10" domain="self.isTechnical='true'"/> -->
+				<field name="department" title="Department" colSpan="10" domain="self.isTechnical=:isTechi" />
+			</panel>
+		</panel>
+
+
+		<panel title="Contacts" css="panel-green">
+			<field name="address" colSpan="12" css="address-list">
+				<viewer><![CDATA[
         <address>
         {{record.street}}, {{record.area}}<br>
         {{record.city}}, {{record.state}} - {{record.zip}}<br>
@@ -51,49 +56,56 @@
         </address>
         ]]>
         </viewer>
-        <editor x-show-titles="false">
-          <field name="street" colSpan="12"/>
-          <field name="area" colSpan="12"/>
-          <field name="city" colSpan="4"/>
-          <field name="state" colSpan="4"/>
-          <field name="zip" colSpan="4"/>
-          <field name="country" widget="SuggestBox" colSpan="12"/>
-        </editor>
-      </field>
-      </panel>
-  	
-  	  <panel title="Company" css="panel-blue" >
-  		<field name="company" colSpan="12" canEdit="true"/> 
-      </panel>
-      
-      <panel-related field="project" css="panel-red">
-      
-      </panel-related>
-      
-      <panel title="ButtonTest" css="panel-yellow">
-      	<button name="sayBtn" title="ClickMe!!" type="button" class="btn" onClick="say.methodCalled" />
-      	<button name="scriptBtn" title="CallToActionScript!!" type="button" class="btn" onClick="say.callToActionScript" />
-      </panel>
-      
-  </form>
-  
-  <action-method name="partnerForm.onNewSay">
-		<call class="com.axelor.partner.web.HelloController" method="onNewSayPartner()"/>
+				<editor x-show-titles="false">
+					<field name="street" colSpan="12" />
+					<field name="area" colSpan="12" />
+					<field name="city" colSpan="4" />
+					<field name="state" colSpan="4" />
+					<field name="zip" colSpan="4" />
+					<field name="country" widget="SuggestBox" colSpan="12" />
+				</editor>
+			</field>
+		</panel>
+
+		<panel title="Company" css="panel-blue">
+			<field name="company" colSpan="12" canEdit="true" />
+		</panel>
+
+		<panel-related field="project" css="panel-red">
+
+		</panel-related>
+
+		<panel title="ButtonTest" css="panel-yellow">
+			<button name="sayBtn" title="ClickMe!!" type="button" class="btn" onClick="say.methodCalled" />
+			<button name="scriptBtn" title="CallToActionScript!!" type="button" class="btn" onClick="say.callToActionScript" />
+		</panel>
+
+	</form>
+	
+	<action-report name="generateReportGrid.action" output="partner-detail-grid" design="project_report.rptdesign" format="pdf">
+		<param name="id" expr="eval:id"/>
+	</action-report>
+	<action-report name="generateReport.action" output="partner-detail" design="project_report.rptdesign" format="pdf">
+		<param name="partnerSeq" expr="eval:partnerSeq"/>
+	</action-report>
+	
+	<action-method name="partnerForm.onNewSay">
+		<call class="com.axelor.partner.web.HelloController" method="onNewSayPartner()" />
 	</action-method>
 	<action-method name="partnerForm.onLoadSay">
-		<call class="com.axelor.partner.web.HelloController" method="onLoadSayPartner"/>
+		<call class="com.axelor.partner.web.HelloController" method="onLoadSayPartner" />
 	</action-method>
 	<action-method name="partnerForm.onSaveSay">
-		<call class="com.axelor.partner.web.HelloController" method="onSaveSayPartner()"/>
+		<call class="com.axelor.partner.web.HelloController" method="onSaveSayPartner()" />
 	</action-method>
 
 	<cards name="partner-card" model="com.axelor.partner.db.Partner" title="Partner Card">
-    	<field name="fullName"/>
-    	<field name="address" />
-    	<field name="hasImage"/>
-    	<field name="email" />
-    	
-    	<template><![CDATA[
+		<field name="fullName" />
+		<field name="address" />
+		<field name="hasImage" />
+		<field name="email" />
+
+		<template><![CDATA[
     		<div class="span4 card-image">
     			<img ng-if="hasImage" ng-src="{{$image(null, 'image')}}">
       			<img ng-if="!hasImage" src="img/user.png">
@@ -110,31 +122,31 @@
           	<button type="button" class="btn" ui-action-clicks="say.methodCalled" />
     	]]>	</template>
 	</cards>
-	
+
 	<action-method name="say.methodCalled">
-		<call class="com.axelor.partner.web.HelloController" method="say"/>
+		<call class="com.axelor.partner.web.HelloController" method="say" />
 	</action-method>
-	
+
 	<action-script name="say.callToActionScript">
 		<script language="js"> 
 		alert("Action Script Running");
 		</script>
-	</action-script>	
-	
+	</action-script>
+
 	<action-validate name="action-validation-one">
 		<error message="Your birthday cannot be after today." if="dateOfBirth &gt; __date__" action="action-validation-one-action" />
 	</action-validate>
-	
+
 	<action-attrs name="action-validation-one-action">
-<!-- 		<attribute name="hidden" for="partnerSeq" expr="true"/> -->
-		<attribute name="title" for="dateOfBirth" expr="Date Of Birth"/>
+		<!-- <attribute name="hidden" for="partnerSeq" expr="true"/> -->
+		<attribute name="title" for="dateOfBirth" expr="Date Of Birth" />
 	</action-attrs>
-	
-<!-- 	<action-validate name="action-validation-two"> -->
-<!-- 		<info message="FirstName equal to LastName" if="firstName == lastName" /> -->
-<!-- 		<notify message="FirstName equal to LastName" if="firstName != lastName" /> -->
-<!-- 		<alert message="FirstName equal to LastName" if="firstName == lastName" /> --> 
-<!-- 		<alert message="FIrstName not equal to LastName" if="firstName != lastName" />  --> 
-<!-- 	</action-validate>	 -->
-	
+
+	<!-- <action-validate name="action-validation-two"> -->
+	<!-- <info message="FirstName equal to LastName" if="firstName == lastName" /> -->
+	<!-- <notify message="FirstName equal to LastName" if="firstName != lastName" /> -->
+	<!-- <alert message="FirstName equal to LastName" if="firstName == lastName" /> -->
+	<!-- <alert message="FIrstName not equal to LastName" if="firstName != lastName" /> -->
+	<!-- </action-validate> -->
+
 </object-views>

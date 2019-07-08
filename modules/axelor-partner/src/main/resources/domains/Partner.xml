@@ -18,7 +18,8 @@
 	    return firstName+" "+lastName;
 	    ]]> </string>
 	    <date name="dateOfBirth" />
-	    <binary name="image" title="Photo" help="Max size 4MB." image="true" />
+	    <!-- <binary name="image" title="Photo" help="Max size 4MB." image="true" /> -->
+	    <many-to-one name="image" ref="com.axelor.meta.db.MetaFile" />
 	    <boolean name="isTechi"  title="Is Techinical" />
 	    
 	    <one-to-one ref="Email" name="email"  title="Email"/>
