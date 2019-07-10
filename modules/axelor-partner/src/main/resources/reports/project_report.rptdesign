@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.23" id="1">
     <property name="createdBy">Eclipse BIRT Designer Version 4.7.0.v201706222054</property>
-    <list-property name="propertyBindings">
-        <structure>
-            <property name="name">queryText</property>
-            <property name="id">5</property>
-        </structure>
-        <structure>
-            <property name="name">queryTimeOut</property>
-            <property name="id">5</property>
-        </structure>
-        <structure>
-            <property name="name">rowFetchSize</property>
-            <property name="id">5</property>
-        </structure>
-    </list-property>
     <property name="units">in</property>
     <property name="iconFile">/templates/blank_report.gif</property>
     <property name="bidiLayoutOrientation">ltr</property>
     <property name="imageDPI">142</property>
+    <parameters>
+        <scalar-parameter name="id" id="115">
+            <property name="valueType">static</property>
+            <property name="isRequired">true</property>
+            <property name="dataType">decimal</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList"/>
+            <property name="paramType">simple</property>
+            <property name="controlType">text-box</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
     <data-sources>
         <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="Data Source" id="4">
             <list-property name="privateDriverProperties">
@@ -66,13 +66,26 @@
                     <text-property name="heading">partner_seq</text-property>
                 </structure>
                 <structure>
-                    <property name="columnName">email</property>
-                    <property name="analysis">measure</property>
-                    <text-property name="displayName">email</text-property>
-                    <text-property name="heading">email</text-property>
+                    <property name="columnName">email_id</property>
+                    <property name="analysis">dimension</property>
+                    <text-property name="displayName">email_id</text-property>
+                    <text-property name="heading">email_id</text-property>
                 </structure>
             </list-property>
-            <list-property name="parameters"/>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">id</property>
+                    <property name="paramName">id</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">decimal</property>
+                    <property name="nativeDataType">-5</property>
+                    <property name="position">1</property>
+                    <expression name="defaultValue" type="javascript">1</expression>
+                    <property name="isOptional">false</property>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
             <structure name="cachedMetaData">
                 <list-property name="resultSet">
                     <structure>
@@ -92,8 +105,8 @@
                     </structure>
                     <structure>
                         <property name="position">4</property>
-                        <property name="name">email</property>
-                        <property name="dataType">decimal</property>
+                        <property name="name">email_id</property>
+                        <property name="dataType">string</property>
                     </structure>
                 </list-property>
             </structure>
@@ -122,14 +135,21 @@
                 </structure>
                 <structure>
                     <property name="position">4</property>
-                    <property name="name">email</property>
-                    <property name="nativeName">email</property>
-                    <property name="dataType">decimal</property>
-                    <property name="nativeDataType">-5</property>
+                    <property name="name">email_id</property>
+                    <property name="nativeName">email_id</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
                 </structure>
             </list-property>
-            <xml-property name="queryText"><![CDATA[select id,full_name, partner_seq, email
-from partner_partner]]></xml-property>
+            <xml-property name="queryText"><![CDATA[select 
+	partner_partner.id,
+	partner_partner.full_name,
+ 	partner_partner.partner_seq, 
+ 	partner_email.email_id
+
+from partner_partner 
+inner join partner_email on partner_partner.id=partner_email.id
+where partner_partner.id=?]]></xml-property>
         </oda-data-set>
     </data-sets>
     <page-setup>
@@ -143,7 +163,7 @@ from partner_partner]]></xml-property>
         </simple-master-page>
     </page-setup>
     <body>
-        <table id="6">
+        <table id="51">
             <property name="dataSet">Partner</property>
             <list-property name="boundDataColumns">
                 <structure>
@@ -159,60 +179,85 @@ from partner_partner]]></xml-property>
                     <property name="dataType">string</property>
                 </structure>
                 <structure>
-                    <property name="name">email</property>
-                    <text-property name="displayName">email</text-property>
-                    <expression name="expression" type="javascript">dataSetRow["email"]</expression>
-                    <property name="dataType">decimal</property>
+                    <property name="name">email_id</property>
+                    <text-property name="displayName">email_id</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["email_id"]</expression>
+                    <property name="dataType">string</property>
                 </structure>
             </list-property>
-            <column id="25"/>
-            <column id="26"/>
-            <column id="27"/>
+            <column id="70"/>
+            <column id="71"/>
+            <column id="72"/>
             <header>
-                <row id="7">
-                    <cell id="8">
-                        <label id="9">
+                <row id="52">
+                    <cell id="53">
+                        <label id="54">
                             <text-property name="text">full_name</text-property>
                         </label>
                     </cell>
-                    <cell id="10">
-                        <label id="11">
+                    <cell id="55">
+                        <label id="56">
                             <text-property name="text">partner_seq</text-property>
                         </label>
                     </cell>
-                    <cell id="12">
-                        <label id="13">
-                            <text-property name="text">email</text-property>
+                    <cell id="57">
+                        <label id="58">
+                            <text-property name="text">email_id</text-property>
                         </label>
                     </cell>
                 </row>
             </header>
             <detail>
-                <row id="14">
-                    <cell id="15">
-                        <data id="16">
+                <row id="59">
+                    <cell id="60">
+                        <data id="61">
                             <property name="resultSetColumn">full_name</property>
                         </data>
                     </cell>
-                    <cell id="17">
-                        <data id="18">
+                    <cell id="62">
+                        <data id="63">
                             <property name="resultSetColumn">partner_seq</property>
                         </data>
                     </cell>
-                    <cell id="19">
-                        <data id="20">
-                            <property name="resultSetColumn">email</property>
+                    <cell id="64">
+                        <data id="65">
+                            <property name="resultSetColumn">email_id</property>
                         </data>
                     </cell>
                 </row>
             </detail>
             <footer>
-                <row id="21">
-                    <cell id="22"/>
-                    <cell id="23"/>
-                    <cell id="24"/>
+                <row id="66">
+                    <cell id="67"/>
+                    <cell id="68"/>
+                    <cell id="69"/>
                 </row>
             </footer>
         </table>
+        <grid id="116">
+            <column id="117"/>
+            <column id="118"/>
+            <column id="119"/>
+            <row id="120">
+                <cell id="121">
+                    <text id="132">
+                        <property name="contentType">html</property>
+                        <text-property name="content"><![CDATA[<VALUE-OF>params["id"].value</VALUE-OF>]]></text-property>
+                    </text>
+                </cell>
+                <cell id="122"/>
+                <cell id="123"/>
+            </row>
+            <row id="124">
+                <cell id="125"/>
+                <cell id="126"/>
+                <cell id="127"/>
+            </row>
+            <row id="128">
+                <cell id="129"/>
+                <cell id="130"/>
+                <cell id="131"/>
+            </row>
+        </grid>
     </body>
 </report>

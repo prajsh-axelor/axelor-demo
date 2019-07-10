@@ -5,6 +5,7 @@
 	<grid model="com.axelor.partner.db.Partner" title="Partner" name="partner-grid">
 		<toolbar>
 			<button name="btnGenerateReport" title="Report" icon="fa-print" onClick="generateReportGrid.action" />
+			<button name="btnGenerateReportBasic" title="ReportBas" icon="fa-print" onClick="generateReportBasic.action"/>
 		</toolbar>
 		<field name="partnerSeq" />
 		<field name="fullName" />
@@ -83,10 +84,15 @@
 	</form>
 	
 	<action-report name="generateReportGrid.action" output="partner-detail-grid" design="project_report.rptdesign" format="pdf">
-		<param name="id" expr="eval:id"/>
 	</action-report>
+	
+	<action-report name="generateReportBasic.action" output="partner-detail" design="project_report_grid.rptdesign" format="pdf">
+		<param name="ids" expr="eval:_ids.join(',')" />
+	</action-report>
+	
+<!-- 	for the form view report button -->
 	<action-report name="generateReport.action" output="partner-detail" design="project_report.rptdesign" format="pdf">
-		<param name="partnerSeq" expr="eval:partnerSeq"/>
+		<param name="id" expr="eval:id"/>
 	</action-report>
 	
 	<action-method name="partnerForm.onNewSay">

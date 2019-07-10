@@ -5,10 +5,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import com.axelor.auth.db.User;
-import com.axelor.inject.Beans;
 import com.axelor.partner.db.Partner;
 import com.axelor.partner.db.Project;
 import com.axelor.partner.db.ProjectTask;
@@ -23,8 +23,16 @@ public class ProjectExport {
   @Inject ProjectRepository projectRepository;
 
   public void printGrid(ActionRequest request, ActionResponse response) {
-	  System.out.println(request.getContext().keySet());
-	  System.out.println(request.getContext().values());
+//	  System.out.println(request.getContext().keySet());
+//	  System.out.println(request.getContext().values());
+	  System.out.println(request.getContext().get("_ids"));
+	  List<Integer> ids = (List<Integer>) request.getContext().get("_ids");
+	  ids.forEach(System.out::println);
+	  
+	  request.getContext().put("self_ids", ids);
+	  
+	  System.out.println(request.getContext().get("_ids").getClass().getName());
+	  //	  System.out.println(request.getContext());
   }
 
   public void createCSVGrid(ActionRequest request, ActionResponse response) {
