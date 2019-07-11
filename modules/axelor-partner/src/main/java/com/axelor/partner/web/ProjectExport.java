@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.axelor.app.AppSettings;
 import com.axelor.auth.db.User;
 import com.axelor.partner.db.Partner;
 import com.axelor.partner.db.Project;
@@ -25,14 +26,22 @@ public class ProjectExport {
   public void printGrid(ActionRequest request, ActionResponse response) {
 //	  System.out.println(request.getContext().keySet());
 //	  System.out.println(request.getContext().values());
-	  System.out.println(request.getContext().get("_ids"));
-	  List<Integer> ids = (List<Integer>) request.getContext().get("_ids");
-	  ids.forEach(System.out::println);
 	  
-	  request.getContext().put("self_ids", ids);
-	  
-	  System.out.println(request.getContext().get("_ids").getClass().getName());
+//	  System.out.println(request.getContext().get("_ids"));
+//	  List<Integer> ids = (List<Integer>) request.getContext().get("_ids");
+//	  ids.forEach(System.out::println);
+//	  
+//	  request.getContext().put("self_ids", ids);
+//	  
+//	  System.out.println(request.getContext().get("_ids").getClass().getName());
+//	  
+	  System.out.println(AppSettings.get().get("file.upload.dir"));
 	  //	  System.out.println(request.getContext());
+  }
+  
+  public void setFileUploadDirToContext(ActionRequest request, ActionResponse response) {
+	  request.getContext().put("upload_path", AppSettings.get().get("file.upload.dir"));
+	  System.out.println(request.getContext().get("upload_path"));
   }
 
   public void createCSVGrid(ActionRequest request, ActionResponse response) {
