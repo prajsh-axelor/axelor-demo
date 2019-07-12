@@ -4,7 +4,7 @@
 
 	<grid model="com.axelor.partner.db.Partner" title="Partner" name="partner-grid">
 		<toolbar>
-			<button name="btnGenerateReport" title="Report" icon="fa-print" onClick="generateReportGrid.action" />
+<!-- 			<button name="btnGenerateReport" title="Report" icon="fa-print" onClick="generateReportGrid.action" /> -->
 			<button name="btnGenerateReportBasic" title="ReportBas" icon="fa-print" onClick="generateReportBasic.getContextVariable,generateReportBasic.action"/>
 		</toolbar>
 		<field name="partnerSeq" />
@@ -87,8 +87,8 @@
 		<call class="com.axelor.partner.web.ProjectExport" method="setFileUploadDirToContext"/>
 	</action-method>
 	
-	<action-report name="generateReportGrid.action" output="partner-detail-grid" design="project_report.rptdesign" format="pdf">
-	</action-report>
+<!-- 	<action-report name="generateReportGrid.action" output="partner-detail-grid" design="project_report.rptdesign" format="pdf"> -->
+<!-- 	</action-report> -->
 	
 	<action-report name="generateReportBasic.action" output="partner-detail" design="project_report_grid.rptdesign" format="pdf">
 		<param name="ids" expr="eval:_ids.join(',')" />
