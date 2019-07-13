@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
+	
+	<grid name="order-grid" title="Orders" model="com.axelor.demoimpl.db.Order">
+		<field name="name" />
+		<field name="customer" />
+		<field name="orderDate" />
+		<field name="status" />
+		<field name="totalAmount" />
+	</grid>
+	
+	<form name="order-form" title="Order" model="com.axelor.demoimpl.db.Order">
+		<toolbar>
+			<button name="btnPrint" title="Print" showTitle="false" showIf="id" onClick="print.sale.order" icon="fa-print" />
+		</toolbar>		
+		<panel title="Order Details">
+			<field name="name" />
+			<field name="status" widget="nav-select" readonly="true" />
+			<field name="customer" readonlyIf="confirmed" form-view="partner-form" grid-view="partner-grid" />
+			<field name="confirmed" widget="boolean-switch" onChange="com.axelor.demoimpl.web.SaleOrderController:onConfirm" />
+    		<field name="orderDate" />
+    		<field name="confirmDate" />
+			
+		</panel>	
+		<panel-tabs>
+			<panel-related field="items" ref="OrderLine" editable="true" readonlyIf="confirmed" orderBy="sequence" canMove="true" 
+			onChange="com.axelor.demoimpl.web.SaleOrderController:calculate">
+				<field name="product" />
+				<field name="price" />
+				<field name="quantity" />
+			</panel-related>
+			<panel title="Notes">
+				<field name="notes" showTitle="false" colSpan="12" widget="html"></field>
+			</panel>
+		</panel-tabs>
+	</form>
+	
+</object-views>
