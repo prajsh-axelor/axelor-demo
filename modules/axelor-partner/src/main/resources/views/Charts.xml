@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.0.xsd">
+
+	<chart name="chart.partner.department.tech.bar" title="Departments on the basic of Work">
+		<dataset type="jpql"><![CDATA[
+
+		SELECT 
+	 		COUNT(dept.name) AS deptNo,
+ 			dept.isTechnical AS isTechnical
+		FROM
+			Department dept
+		GROUP BY
+			dept.isTechnical
+
+		]]></dataset>
+		<category key="isTechnical" />
+		<series key="deptNo" groupBy="isTechnical" type="bar" />
+	</chart>
+	
+	<chart name="chart.partner.department.tech.pie" title="Departments on the basic of Work">
+		<dataset type="jpql"><![CDATA[
+
+		SELECT 
+	 		COUNT(dept.name) AS deptNo,
+ 			dept.isTechnical AS isTechnical
+		FROM
+			Department dept
+		GROUP BY
+			dept.isTechnical
+
+		]]></dataset>
+		<category key="isTechnical" />
+		<series key="deptNo" groupBy="isTechnical" type="pie" />
+	</chart>
+
+	<chart name="chart.partner.per.company" title="Employee per Company">
+		<dataset type="sql">
+		<![CDATA[
+			select 
+				count(p.full_name) as empNo, 
+				pc.company_name as companyName
+			from partner_partner as p
+			left join partner_company_partner as pcp on p.id=pcp.partner
+			left join partner_company as pc on pc.id=pcp.company
+			group by
+				pc.company_name
+		]]>		
+		</dataset>
+		<category key="companyName" />
+		<series key="empNo" />
+	</chart>
+
+</object-views>
